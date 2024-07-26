@@ -4,10 +4,10 @@ services:
     ports:
       - "3000:3000"
     environment:
-      - MYSQL_HOST=localhost
+      - MYSQL_HOST=mysql
       - MYSQL_USER=root
       - MYSQL_PASSWORD=admin
-      - MYSQL_DB=email_db
+      - MYSQL_DB=emails_db
     depends_on:
       - mysql
 
@@ -16,7 +16,7 @@ services:
     restart: always
     environment:
       MYSQL_ROOT_PASSWORD: admin
-      MYSQL_DATABASE: email_db
+      MYSQL_DATABASE: emails_db
     ports:
       - "3306:3306"
     volumes:
