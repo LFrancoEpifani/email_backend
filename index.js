@@ -20,10 +20,14 @@ connection.connect(err => {
   console.log('Connected to MySQL');
 });
 
-app.get('/', (req, res) => {
-  res.send('Hello, World!');
+app.get('/', async (req, res) => {
+  try {
+    const users = await User.find();
+    res.json(users);
+  } catch (error) {
+    res.status(500).send('Error al obtener los usuarios');
+  }
 });
-
 app.listen(port, () => {
   console.log(`Server running at http://localhost:${port}/`);
 });
